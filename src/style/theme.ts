@@ -63,15 +63,15 @@ const colors: Colors = {
     dark: ['#333'],
   },
   primary: {
-    light: ['#9daaff'],
-    default: '#452AEF',
-    dark: ['#2738a7'],
+    light: ['#58a5f0'],
+    default: '#0277bd',
+    dark: ['#004c8c'],
     innerText: '#fff',
   },
   secondary: {
-    light: ['#ffc7f3'],
-    default: '#FA3EA3',
-    dark: ['#ab609b'],
+    light: ['#b47cff'],
+    default: '#7c4dff',
+    dark: ['#3f1dcb'],
     innerText: '#fff',
   },
   success: {
