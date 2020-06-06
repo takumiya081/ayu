@@ -1,0 +1,8 @@
+/* eslint-disable import/no-default-export */
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default (req: any, res: any) => {
+  res.statusCode = 200;
+  res.json({name: 'John Doe'});
+};
