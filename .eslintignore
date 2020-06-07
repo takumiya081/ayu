@@ -5,3 +5,4 @@ graphql-schema-linter.config.js
 src/functions/interface/resolver/resolverTypes.ts
 src/functions/infrastructure/typeDef.ts
 lib/typeDefGen/**
+jest.config.js
