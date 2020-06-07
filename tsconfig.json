@@ -21,7 +21,8 @@
     "jsx": "preserve",
     "paths": {
       "@/style/*": ["style/*"],
-      "@/components/*": ["components/*"]
+      "@/components/*": ["components/*"],
+      "@/lib/*": ["lib/*"]
     }
   },
   "exclude": [
