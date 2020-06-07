@@ -47,17 +47,17 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
-    'plugin:import/typescript', // https://github.com/benmosher/eslint-plugin-import/issues/1285
+    'plugin:import/typescript',
     'prettier',
     'prettier/@typescript-eslint',
   ],
   plugins: ['@typescript-eslint', 'jest', 'simple-import-sort', 'prettier'],
   rules: {
-    // airbnb-baseを入れたらいんだけど、ややこしそうなのでairbnbで不都合があるruleを無効にする
+    'react/prop-types': OFF,
     'react/static-property-placement': OFF,
     'react/jsx-filename-extension': [ERROR, {extensions: ['.tsx']}],
+    'react/jsx-wrap-multilines': ['error', {declaration: false, assignment: false}],
     'prettier/prettier': ERROR,
-    // return typeの明示は常に行わない
     '@typescript-eslint/explicit-function-return-type': OFF,
     '@typescript-eslint/explicit-module-boundary-types': OFF,
     'no-plusplus': OFF,
@@ -69,12 +69,9 @@ module.exports = {
         custom: 'ignore',
       },
     ],
-    // export defaultの禁止
     'import/prefer-default-export': OFF,
     'import/no-default-export': ERROR,
     'import/no-deprecated': WARN,
-    // eslintでimportのpathがあってるのか確認することをやめる。
-    // 理由: 管理するconfigが増える。typescriptでかくしビルドするので、tsがエラーを出してくれる。
     'import/no-unresolved': OFF,
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
     'sort-imports': OFF,
@@ -100,7 +97,6 @@ module.exports = {
     '@typescript-eslint/naming-convention': [
       ERROR,
       {
-        // type は pascal case かつ TFoo のように prefix 禁止
         selector: 'typeParameter',
         format: ['PascalCase'],
         custom: {
@@ -109,7 +105,6 @@ module.exports = {
         },
       },
       {
-        // interface は pascal case かつ IFoo のように prefix 禁止
         selector: 'interface',
         format: ['PascalCase'],
         custom: {
