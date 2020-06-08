@@ -6,9 +6,9 @@ import {RiverModel} from './RiverModel';
 
 jest.mock('./data/riversData');
 
-describe('query', () => {
+describe('river query', () => {
   describe('findRiverById', () => {
-    test('idが存在するとき、modelを取得する', () => {
+    test('riverのidが存在するとき、river modelを取得する', () => {
       const mockRiver = riversData[0];
       const result = findRiverById(mockRiver.id);
       const returnModel: RiverModel = {
@@ -24,19 +24,19 @@ describe('query', () => {
       expect(result).toStrictEqual(returnModel);
     });
 
-    test('idが存在しないとき、undefined', () => {
+    test('riverのidが存在しないとき、undefined', () => {
       const result = findRiverById('no-exist-id');
       expect(result).toBeUndefined();
     });
   });
 
   describe('queryByName', () => {
-    test('部分一致するものがある場合、Modelの配列を返す', () => {
+    test('部分一致するものがある場合、river Modelの配列を返す', () => {
       const result = queryByName('river name 2');
       expect(result).toHaveLength(11);
     });
 
-    test('部分一致するものがない場合、空配列を返す', () => {
+    test('riverの名前で部分一致するものがない場合、空配列を返す', () => {
       const result = queryByName('存在しない川');
       expect(result).toHaveLength(0);
     });
