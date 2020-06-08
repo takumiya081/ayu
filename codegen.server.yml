@@ -11,3 +11,4 @@ config:
     URI: string
   mappers:
     River: '@/functions/modules/river/RiverModel#RiverModel'
+    Shop: '@/functions/modules/shop/ShopModel#ShopModel'
