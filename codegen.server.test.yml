@@ -1,0 +1,11 @@
+overwrite: true
+schema: schema.graphql
+documents: src/functions/**/*.graphql
+generates:
+  src/functions/testUtils/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-document-nodes
+config:
+  scalars:
+    URI: string
