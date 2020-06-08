@@ -9,9 +9,6 @@ query TestSearchRiverQuery($query: String!) {
     union {
       id
       name
-      rivers {
-        id
-      }
     }
   }
 }
