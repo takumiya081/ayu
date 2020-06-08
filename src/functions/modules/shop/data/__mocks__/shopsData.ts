@@ -10,8 +10,8 @@ for (let i = 0; i < 100; i++) {
     prefecture: mockPrefectures[i % mockPrefectures.length],
     link: `https://example.com?i=${i}`,
     address: `address${i}`,
-    lat: 135.0 + 0.01 * i,
-    lng: 33.0 + 0.01 * i,
+    lng: 135.0 + 0.05 * i,
+    lat: 33.0 + 0.05 * i,
     unionIds: `union-test-id-${i},union-test-id-${i + 1}`,
   });
 }

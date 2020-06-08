@@ -2,7 +2,7 @@ import {riversData} from '@/functions/modules/river/data/riversData';
 import {unionsData} from '@/functions/modules/union/data/unionsData';
 
 import {shopsData, unionIdsDelimiter} from './data/shopsData';
-import {findShopById, queryShopsByRiverId} from './query';
+import {findShopById, queryShopsByLocation, queryShopsByRiverId} from './query';
 import {ShopModel} from './ShopModel';
 
 jest.mock('./data/shopsData');
@@ -46,6 +46,18 @@ describe('shops query', () => {
 
     test('river idが存在しないとき、空配列になる', () => {
       const result = queryShopsByRiverId('not-exist');
+      expect(result).toHaveLength(0);
+    });
+  });
+
+  describe('queryShopsByLocation', () => {
+    test('locationの近くのshop modelを取得する', () => {
+      const result = queryShopsByLocation({lat: 35, lng: 137});
+      expect(result).toHaveLength(3);
+    });
+
+    test('locationの近くのshopがない場合、空配列になる', () => {
+      const result = queryShopsByLocation({lat: 60, lng: 10});
       expect(result).toHaveLength(0);
     });
   });
