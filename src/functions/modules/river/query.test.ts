@@ -1,5 +1,3 @@
-// import * as faker from 'faker';
-
 import {riversData} from './data/riversData';
 import {findRiverById, queryByName} from './query';
 import {RiverModel} from './RiverModel';
