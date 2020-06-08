@@ -5,5 +5,8 @@
   "eslint.packageManager": "yarn",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
+  },
+  "eslint.options": {
+    "ignorePattern": "**/*.js"
   }
 }

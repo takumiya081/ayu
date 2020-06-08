@@ -1,0 +1,14 @@
+schema: schema.graphql
+generates:
+  src/functions/interface/resolver/resolverTypes.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+config:
+  showUnusedMappers: true
+  immutableTypes: true
+  scalars:
+    URI: string
+  mappers:
+    River: '@/functions/modules/river/RiverModel#RiverModel'
+    Shop: '@/functions/modules/shop/ShopModel#ShopModel'

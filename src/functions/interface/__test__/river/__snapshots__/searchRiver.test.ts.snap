@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search river query riverがある場合 1`] = `
+Object {
+  "data": Object {
+    "searchRiver": Array [
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0x",
+        "location": Object {
+          "lat": 121,
+          "lng": 91,
+        },
+        "name": "river name 1",
+        "union": null,
+      },
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0xMA==",
+        "location": Object {
+          "lat": 130,
+          "lng": 100,
+        },
+        "name": "river name 10",
+        "union": null,
+      },
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0xMQ==",
+        "location": Object {
+          "lat": 131,
+          "lng": 101,
+        },
+        "name": "river name 11",
+        "union": null,
+      },
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0xMg==",
+        "location": Object {
+          "lat": 132,
+          "lng": 102,
+        },
+        "name": "river name 12",
+        "union": null,
+      },
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0xMw==",
+        "location": Object {
+          "lat": 133,
+          "lng": 103,
+        },
+        "name": "river name 13",
+        "union": null,
+      },
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0xNA==",
+        "location": Object {
+          "lat": 134,
+          "lng": 104,
+        },
+        "name": "river name 14",
+        "union": null,
+      },
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0xNQ==",
+        "location": Object {
+          "lat": 135,
+          "lng": 105,
+        },
+        "name": "river name 15",
+        "union": null,
+      },
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0xNg==",
+        "location": Object {
+          "lat": 136,
+          "lng": 106,
+        },
+        "name": "river name 16",
+        "union": null,
+      },
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0xNw==",
+        "location": Object {
+          "lat": 137,
+          "lng": 107,
+        },
+        "name": "river name 17",
+        "union": null,
+      },
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0xOA==",
+        "location": Object {
+          "lat": 138,
+          "lng": 108,
+        },
+        "name": "river name 18",
+        "union": null,
+      },
+      Object {
+        "id": "cml2ZXItdGVzdC1pZC0xOQ==",
+        "location": Object {
+          "lat": 139,
+          "lng": 109,
+        },
+        "name": "river name 19",
+        "union": null,
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

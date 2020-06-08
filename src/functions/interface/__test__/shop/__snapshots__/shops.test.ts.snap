@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shops query locationでクエリ 1`] = `
+Object {
+  "data": Object {
+    "shops": Array [
+      Object {
+        "id": "c2hvcC10ZXN0LWlkLTM5",
+        "link": "https://example.com?i=39",
+        "location": Object {
+          "lat": 34.95,
+          "lng": 136.95,
+        },
+        "name": "shop name 39",
+      },
+      Object {
+        "id": "c2hvcC10ZXN0LWlkLTQw",
+        "link": "https://example.com?i=40",
+        "location": Object {
+          "lat": 35,
+          "lng": 137,
+        },
+        "name": "shop name 40",
+      },
+      Object {
+        "id": "c2hvcC10ZXN0LWlkLTQx",
+        "link": "https://example.com?i=41",
+        "location": Object {
+          "lat": 35.05,
+          "lng": 137.05,
+        },
+        "name": "shop name 41",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`shops query riverIdでクエリ 1`] = `
+Object {
+  "data": Object {
+    "shops": Array [
+      Object {
+        "id": "c2hvcC10ZXN0LWlkLTA=",
+        "link": "https://example.com?i=0",
+        "location": Object {
+          "lat": 33,
+          "lng": 135,
+        },
+        "name": "shop name 0",
+      },
+      Object {
+        "id": "c2hvcC10ZXN0LWlkLTE=",
+        "link": "https://example.com?i=1",
+        "location": Object {
+          "lat": 33.05,
+          "lng": 135.05,
+        },
+        "name": "shop name 1",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

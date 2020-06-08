@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`river query riverがある場合 1`] = `
+Object {
+  "data": Object {
+    "river": Object {
+      "id": "cml2ZXItdGVzdC1pZC0w",
+      "location": Object {
+        "lat": 120,
+        "lng": 90,
+      },
+      "name": "river name 0",
+      "union": null,
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
