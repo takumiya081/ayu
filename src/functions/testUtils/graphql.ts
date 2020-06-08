@@ -49,10 +49,14 @@ export type Union = Node & {
   __typename?: 'Union';
   /** id of union */
   id: Scalars['ID'];
+  /** ホームページなど */
+  link?: Maybe<Scalars['URI']>;
   /** name of union */
   name: Scalars['String'];
   /** 漁協に所属している川 */
   rivers: Array<River>;
+  /** 解禁期間 */
+  term?: Maybe<Scalars['String']>;
 };
 
 /** おとり店 */
@@ -70,76 +74,87 @@ export type Shop = Node & {
   unions: Array<Union>;
 };
 
-/** Information about pagination in a connection. */
-export type PageInfo = {
-  __typename?: 'PageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean'];
+export type QueryShopLocationInput = {
+  lat: Scalars['Int'];
+  lng: Scalars['Int'];
 };
 
-/** the connection type for River. */
-export type RiverConnection = {
-  __typename?: 'RiverConnection';
-  /** A list of edges. */
-  edges: Array<RiverEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-/** The connection type for River. */
-export type RiverEdge = {
-  __typename?: 'RiverEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: River;
-};
-
-/** query type */
+/**
+ * query type
+ * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
+ */
 export type Query = {
   __typename?: 'Query';
   /** find River */
   river?: Maybe<River>;
   /** search river by name */
-  searchRiver: RiverConnection;
+  searchRiver: Array<River>;
   /** find Shop */
   shop?: Maybe<Shop>;
-  /** find Union */
-  union?: Maybe<Union>;
+  /** query shop by location */
+  queryShop: Array<Shop>;
 };
 
 
-/** query type */
+/**
+ * query type
+ * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
+ */
 export type QueryRiverArgs = {
   id: Scalars['String'];
 };
 
 
-/** query type */
+/**
+ * query type
+ * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
+ */
 export type QuerySearchRiverArgs = {
   query: Scalars['String'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
 };
 
 
-/** query type */
+/**
+ * query type
+ * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
+ */
 export type QueryShopArgs = {
   id: Scalars['String'];
 };
 
 
-/** query type */
-export type QueryUnionArgs = {
-  id: Scalars['String'];
+/**
+ * query type
+ * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
+ */
+export type QueryQueryShopArgs = {
+  location?: Maybe<QueryShopLocationInput>;
+  riverId?: Maybe<Scalars['String']>;
 };
 
 
 export const TestRiverQuery = gql`
     query TestRiverQuery($id: String!) {
   river(id: $id) {
+    id
+    location {
+      lat
+      lng
+    }
+    name
+    union {
+      id
+      name
+      rivers {
+        id
+      }
+    }
+  }
+}
+    `;
+export const TestSearchRiverQuery = gql`
+    query TestSearchRiverQuery($query: String!) {
+  searchRiver(query: $query) {
     id
     location {
       lat

@@ -63,6 +63,10 @@ type Union implements Node {
   """
   id: ID!
   """
+  ホームページなど
+  """
+  link: URI
+  """
   name of union
   """
   name: String!
@@ -70,6 +74,10 @@ type Union implements Node {
   漁協に所属している川
   """
   rivers: [River!]!
+  """
+  解禁期間
+  """
+  term: String
 }
 
 """
@@ -98,51 +106,14 @@ type Shop implements Node {
   unions: [Union!]!
 }
 
-"""
-Information about pagination in a connection.
-"""
-type PageInfo {
-  """
-  When paginating forwards, the cursor to continue.
-  """
-  endCursor: String
-  """
-  When paginating forwards, are there more items?
-  """
-  hasNextPage: Boolean!
+input QueryShopLocationInput {
+  lat: Int!
+  lng: Int!
 }
-
-"""
-the connection type for River.
-"""
-type RiverConnection {
-  """
-  A list of edges.
-  """
-  edges: [RiverEdge!]!
-  """
-  Information to aid in pagination.
-  """
-  pageInfo: PageInfo!
-}
-
-"""
-The connection type for River.
-"""
-type RiverEdge {
-  """
-  A cursor for use in pagination.
-  """
-  cursor: String!
-  """
-  The item at the end of the edge.
-  """
-  node: River!
-}
-
 
 """
 query type
+今の所数が莫大になる気がしないので、一旦relayではなく配列にする
 """
 type Query {
   """
@@ -152,19 +123,15 @@ type Query {
   """
   search river by name
   """
-  searchRiver(
-    query: String!
-    after: String
-    first: Int
-  ): RiverConnection!
+  searchRiver(query: String!): [River!]!
   """
   find Shop
   """
   shop(id: String!): Shop
   """
-  find Union
+  query shop by location
   """
-  union(id: String!): Union
+  queryShop(location: QueryShopLocationInput, riverId: String): [Shop!]!
 }
 `;
 
