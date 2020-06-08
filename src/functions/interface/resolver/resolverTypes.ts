@@ -1,7 +1,7 @@
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 import { RiverModel } from '@/functions/modules/river/RiverModel';
+import { ShopModel } from '@/functions/modules/shop/ShopModel';
 export type Maybe<T> = T | null;
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -56,8 +56,6 @@ export type Union = Node & {
   readonly link?: Maybe<Scalars['URI']>;
   /** name of union */
   readonly name: Scalars['String'];
-  /** 漁協に所属している川 */
-  readonly rivers: ReadonlyArray<River>;
   /** 解禁期間 */
   readonly term?: Maybe<Scalars['String']>;
 };
@@ -73,8 +71,6 @@ export type Shop = Node & {
   readonly location: Location;
   /** name of union */
   readonly name: Scalars['String'];
-  /** 漁協に所属している川 */
-  readonly unions: ReadonlyArray<Union>;
 };
 
 export type QueryShopLocationInput = {
@@ -221,8 +217,8 @@ export type ResolversTypes = {
   Location: ResolverTypeWrapper<Location>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   River: ResolverTypeWrapper<RiverModel>;
-  Union: ResolverTypeWrapper<Omit<Union, 'rivers'> & { rivers: ReadonlyArray<ResolversTypes['River']> }>;
-  Shop: ResolverTypeWrapper<Omit<Shop, 'unions'> & { unions: ReadonlyArray<ResolversTypes['Union']> }>;
+  Union: ResolverTypeWrapper<Union>;
+  Shop: ResolverTypeWrapper<ShopModel>;
   QueryShopLocationInput: QueryShopLocationInput;
   Query: ResolverTypeWrapper<{}>;
 };
@@ -237,8 +233,8 @@ export type ResolversParentTypes = {
   Location: Location;
   Int: Scalars['Int'];
   River: RiverModel;
-  Union: Omit<Union, 'rivers'> & { rivers: ReadonlyArray<ResolversParentTypes['River']> };
-  Shop: Omit<Shop, 'unions'> & { unions: ReadonlyArray<ResolversParentTypes['Union']> };
+  Union: Union;
+  Shop: ShopModel;
   QueryShopLocationInput: QueryShopLocationInput;
   Query: {};
 };
@@ -270,7 +266,6 @@ export type UnionResolvers<ContextType = any, ParentType extends ResolversParent
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   link?: Resolver<Maybe<ResolversTypes['URI']>, ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  rivers?: Resolver<ReadonlyArray<ResolversTypes['River']>, ParentType, ContextType>;
   term?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
@@ -280,7 +275,6 @@ export type ShopResolvers<ContextType = any, ParentType extends ResolversParentT
   link?: Resolver<Maybe<ResolversTypes['URI']>, ParentType, ContextType>;
   location?: Resolver<ResolversTypes['Location'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  unions?: Resolver<ReadonlyArray<ResolversTypes['Union']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 

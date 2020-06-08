@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shop query shopがある場合 1`] = `
+Object {
+  "data": Object {
+    "shop": Object {
+      "id": "shop-test-id-0",
+      "link": "https://example.com?i=0",
+      "location": Object {
+        "lat": 135,
+        "lng": 33,
+      },
+      "name": "shop name 0",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

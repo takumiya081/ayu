@@ -53,8 +53,6 @@ export type Union = Node & {
   link?: Maybe<Scalars['URI']>;
   /** name of union */
   name: Scalars['String'];
-  /** 漁協に所属している川 */
-  rivers: Array<River>;
   /** 解禁期間 */
   term?: Maybe<Scalars['String']>;
 };
@@ -70,8 +68,6 @@ export type Shop = Node & {
   location: Location;
   /** name of union */
   name: Scalars['String'];
-  /** 漁協に所属している川 */
-  unions: Array<Union>;
 };
 
 export type QueryShopLocationInput = {
@@ -145,9 +141,6 @@ export const TestRiverQuery = gql`
     union {
       id
       name
-      rivers {
-        id
-      }
     }
   }
 }
@@ -164,10 +157,20 @@ export const TestSearchRiverQuery = gql`
     union {
       id
       name
-      rivers {
-        id
-      }
     }
+  }
+}
+    `;
+export const TestShopQuery = gql`
+    query TestShopQuery($id: String!) {
+  shop(id: $id) {
+    id
+    name
+    location {
+      lat
+      lng
+    }
+    link
   }
 }
     `;

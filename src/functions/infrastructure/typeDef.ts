@@ -71,10 +71,6 @@ type Union implements Node {
   """
   name: String!
   """
-  漁協に所属している川
-  """
-  rivers: [River!]!
-  """
   解禁期間
   """
   term: String
@@ -100,10 +96,6 @@ type Shop implements Node {
   name of union
   """
   name: String!
-  """
-  漁協に所属している川
-  """
-  unions: [Union!]!
 }
 
 input QueryShopLocationInput {
@@ -133,6 +125,7 @@ type Query {
   """
   queryShop(location: QueryShopLocationInput, riverId: String): [Shop!]!
 }
+
 `;
 
 export default typeDef;
