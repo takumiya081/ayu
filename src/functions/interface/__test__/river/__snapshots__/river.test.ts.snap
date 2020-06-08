@@ -4,7 +4,7 @@ exports[`river query riverがある場合 1`] = `
 Object {
   "data": Object {
     "river": Object {
-      "id": "river-test-id-0",
+      "id": "cml2ZXItdGVzdC1pZC0w",
       "location": Object {
         "lat": 120,
         "lng": 90,

@@ -5,7 +5,7 @@ Object {
   "data": Object {
     "searchRiver": Array [
       Object {
-        "id": "river-test-id-1",
+        "id": "cml2ZXItdGVzdC1pZC0x",
         "location": Object {
           "lat": 121,
           "lng": 91,
@@ -14,7 +14,7 @@ Object {
         "union": null,
       },
       Object {
-        "id": "river-test-id-10",
+        "id": "cml2ZXItdGVzdC1pZC0xMA==",
         "location": Object {
           "lat": 130,
           "lng": 100,
@@ -23,7 +23,7 @@ Object {
         "union": null,
       },
       Object {
-        "id": "river-test-id-11",
+        "id": "cml2ZXItdGVzdC1pZC0xMQ==",
         "location": Object {
           "lat": 131,
           "lng": 101,
@@ -32,7 +32,7 @@ Object {
         "union": null,
       },
       Object {
-        "id": "river-test-id-12",
+        "id": "cml2ZXItdGVzdC1pZC0xMg==",
         "location": Object {
           "lat": 132,
           "lng": 102,
@@ -41,7 +41,7 @@ Object {
         "union": null,
       },
       Object {
-        "id": "river-test-id-13",
+        "id": "cml2ZXItdGVzdC1pZC0xMw==",
         "location": Object {
           "lat": 133,
           "lng": 103,
@@ -50,7 +50,7 @@ Object {
         "union": null,
       },
       Object {
-        "id": "river-test-id-14",
+        "id": "cml2ZXItdGVzdC1pZC0xNA==",
         "location": Object {
           "lat": 134,
           "lng": 104,
@@ -59,7 +59,7 @@ Object {
         "union": null,
       },
       Object {
-        "id": "river-test-id-15",
+        "id": "cml2ZXItdGVzdC1pZC0xNQ==",
         "location": Object {
           "lat": 135,
           "lng": 105,
@@ -68,7 +68,7 @@ Object {
         "union": null,
       },
       Object {
-        "id": "river-test-id-16",
+        "id": "cml2ZXItdGVzdC1pZC0xNg==",
         "location": Object {
           "lat": 136,
           "lng": 106,
@@ -77,7 +77,7 @@ Object {
         "union": null,
       },
       Object {
-        "id": "river-test-id-17",
+        "id": "cml2ZXItdGVzdC1pZC0xNw==",
         "location": Object {
           "lat": 137,
           "lng": 107,
@@ -86,7 +86,7 @@ Object {
         "union": null,
       },
       Object {
-        "id": "river-test-id-18",
+        "id": "cml2ZXItdGVzdC1pZC0xOA==",
         "location": Object {
           "lat": 138,
           "lng": 108,
@@ -95,7 +95,7 @@ Object {
         "union": null,
       },
       Object {
-        "id": "river-test-id-19",
+        "id": "cml2ZXItdGVzdC1pZC0xOQ==",
         "location": Object {
           "lat": 139,
           "lng": 109,

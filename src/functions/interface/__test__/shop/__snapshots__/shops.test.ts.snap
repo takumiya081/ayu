@@ -5,7 +5,7 @@ Object {
   "data": Object {
     "shops": Array [
       Object {
-        "id": "shop-test-id-39",
+        "id": "c2hvcC10ZXN0LWlkLTM5",
         "link": "https://example.com?i=39",
         "location": Object {
           "lat": 34.95,
@@ -14,7 +14,7 @@ Object {
         "name": "shop name 39",
       },
       Object {
-        "id": "shop-test-id-40",
+        "id": "c2hvcC10ZXN0LWlkLTQw",
         "link": "https://example.com?i=40",
         "location": Object {
           "lat": 35,
@@ -23,7 +23,7 @@ Object {
         "name": "shop name 40",
       },
       Object {
-        "id": "shop-test-id-41",
+        "id": "c2hvcC10ZXN0LWlkLTQx",
         "link": "https://example.com?i=41",
         "location": Object {
           "lat": 35.05,
@@ -48,7 +48,7 @@ Object {
   "data": Object {
     "shops": Array [
       Object {
-        "id": "shop-test-id-0",
+        "id": "c2hvcC10ZXN0LWlkLTA=",
         "link": "https://example.com?i=0",
         "location": Object {
           "lat": 33,
@@ -57,7 +57,7 @@ Object {
         "name": "shop name 0",
       },
       Object {
-        "id": "shop-test-id-1",
+        "id": "c2hvcC10ZXN0LWlkLTE=",
         "link": "https://example.com?i=1",
         "location": Object {
           "lat": 33.05,

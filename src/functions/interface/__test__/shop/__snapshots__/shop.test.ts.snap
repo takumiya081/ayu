@@ -4,7 +4,7 @@ exports[`shop query shopがある場合 1`] = `
 Object {
   "data": Object {
     "shop": Object {
-      "id": "shop-test-id-0",
+      "id": "c2hvcC10ZXN0LWlkLTA=",
       "link": "https://example.com?i=0",
       "location": Object {
         "lat": 33,

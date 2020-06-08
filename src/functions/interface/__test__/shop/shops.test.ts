@@ -1,3 +1,5 @@
+import {btoa} from 'abab';
+
 import {riversData} from '@/functions/modules/river/data/riversData';
 import {
   createApolloTestClient,
@@ -14,7 +16,7 @@ describe('shops query', () => {
     const {query} = createApolloTestClient();
     const result = await query({
       query: TestShopsByRiverIdQuery,
-      variables: {riverId: riversData[1].id},
+      variables: {riverId: btoa(riversData[1].id) as string},
     });
     expect(result).toMatchSnapshot();
   });

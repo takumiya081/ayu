@@ -1,3 +1,5 @@
+import {btoa} from 'abab';
+
 import {shopsData} from '@/functions/modules/shop/data/shopsData';
 import {createApolloTestClient, TestShopQuery} from '@/functions/testUtils';
 
@@ -8,7 +10,7 @@ describe('shop query', () => {
     const {query} = createApolloTestClient();
     const result = await query({
       query: TestShopQuery,
-      variables: {id: shopsData[0].id},
+      variables: {id: btoa(shopsData[0].id) as string},
     });
     expect(result).toMatchSnapshot();
   });
