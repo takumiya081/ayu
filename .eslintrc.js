@@ -51,7 +51,7 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint',
   ],
-  plugins: ['@typescript-eslint', 'jest', 'simple-import-sort', 'prettier'],
+  plugins: ['@typescript-eslint', 'jest', 'graphql', 'simple-import-sort', 'prettier'],
   rules: {
     'react/prop-types': OFF,
     'react/static-property-placement': OFF,
@@ -76,7 +76,6 @@ module.exports = {
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
     'sort-imports': OFF,
     'simple-import-sort/sort': ERROR,
-    'sort-imports': OFF,
     'import/order': OFF,
     // testのdevDependenciesはOKにする
     'import/no-extraneous-dependencies': [

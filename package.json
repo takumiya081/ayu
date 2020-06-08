@@ -13,17 +13,26 @@
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "lint:fix": "eslint --fix \"**/*.{ts,tsx}\"",
     "stylelint": "stylelint \"**/*.tsx\"",
+    "baselint": "eslint -c .eslintrc.base.js --no-eslintrc --ext .js \"**/*.js\"",
     "schemalint": "graphql-schema-linter ./schema.graphql",
+    "graphqllint": "eslint -c .eslintrc.base.js --no-eslintrc --ext .graphql  \"src/**/*.graphql\"",
     "codegen:server": "graphql-codegen -o --config ./codegen.server.yml",
     "codegen:server-test": "graphql-codegen -o --config ./codegen.server.test.yml",
     "schemaTypeGen": "node lib/typeDefGen/index.js",
     "codegen": "yarn codegen:server && yarn codegen:server-test && yarn schemaTypeGen"
   },
   "lint-staged": {
-    "*.{ts,tsx,js}": [
+    "*.{ts,tsx}": [
+      "stylelint",
       "eslint --fix"
     ],
-    "*.{ts,tsx}": "stylelint",
+    "*.graphql": [
+      "prettier --write",
+      "eslint --fix -c .eslintrc.base.js --no-eslintrc --ext .graphql"
+    ],
+    "*.js": [
+      "eslint --fix -c .eslintrc.base.js --no-eslintrc --ext .js"
+    ],
     "src/graphql/schema.graphql": "graphql-schema-linter"
   },
   "husky": {
@@ -85,6 +94,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-emotion": "^10.0.27",
+    "eslint-plugin-graphql": "^4.0.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",

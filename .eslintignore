@@ -1,8 +1,7 @@
 .next/
 **/node_modules/**
-.eslintrc.js
-graphql-schema-linter.config.js
 src/functions/interface/resolver/resolverTypes.ts
 src/functions/infrastructure/typeDef.ts
+src/functions/testUtils/graphql.ts
 lib/typeDefGen/**
-jest.config.js
+schema.graphql
