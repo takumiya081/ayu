@@ -1,0 +1,17 @@
+query TestSearchRiverQuery($query: String!) {
+  searchRiver(query: $query) {
+    id
+    location {
+      lat
+      lng
+    }
+    name
+    union {
+      id
+      name
+      rivers {
+        id
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
+import { RiverModel } from '@/functions/modules/river/RiverModel';
 export type Maybe<T> = T | null;
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -50,10 +52,14 @@ export type Union = Node & {
   readonly __typename?: 'Union';
   /** id of union */
   readonly id: Scalars['ID'];
+  /** ホームページなど */
+  readonly link?: Maybe<Scalars['URI']>;
   /** name of union */
   readonly name: Scalars['String'];
   /** 漁協に所属している川 */
   readonly rivers: ReadonlyArray<River>;
+  /** 解禁期間 */
+  readonly term?: Maybe<Scalars['String']>;
 };
 
 /** おとり店 */
@@ -71,70 +77,62 @@ export type Shop = Node & {
   readonly unions: ReadonlyArray<Union>;
 };
 
-/** Information about pagination in a connection. */
-export type PageInfo = {
-  readonly __typename?: 'PageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor?: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
+export type QueryShopLocationInput = {
+  readonly lat: Scalars['Int'];
+  readonly lng: Scalars['Int'];
 };
 
-/** the connection type for River. */
-export type RiverConnection = {
-  readonly __typename?: 'RiverConnection';
-  /** A list of edges. */
-  readonly edges: ReadonlyArray<RiverEdge>;
-  /** Information to aid in pagination. */
-  readonly pageInfo: PageInfo;
-};
-
-/** The connection type for River. */
-export type RiverEdge = {
-  readonly __typename?: 'RiverEdge';
-  /** A cursor for use in pagination. */
-  readonly cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  readonly node: River;
-};
-
-/** query type */
+/**
+ * query type
+ * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
+ */
 export type Query = {
   readonly __typename?: 'Query';
   /** find River */
   readonly river?: Maybe<River>;
   /** search river by name */
-  readonly searchRiver: RiverConnection;
+  readonly searchRiver: ReadonlyArray<River>;
   /** find Shop */
   readonly shop?: Maybe<Shop>;
-  /** find Union */
-  readonly union?: Maybe<Union>;
+  /** query shop by location */
+  readonly queryShop: ReadonlyArray<Shop>;
 };
 
 
-/** query type */
+/**
+ * query type
+ * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
+ */
 export type QueryRiverArgs = {
   id: Scalars['String'];
 };
 
 
-/** query type */
+/**
+ * query type
+ * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
+ */
 export type QuerySearchRiverArgs = {
   query: Scalars['String'];
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
 };
 
 
-/** query type */
+/**
+ * query type
+ * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
+ */
 export type QueryShopArgs = {
   id: Scalars['String'];
 };
 
 
-/** query type */
-export type QueryUnionArgs = {
-  id: Scalars['String'];
+/**
+ * query type
+ * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
+ */
+export type QueryQueryShopArgs = {
+  location?: Maybe<QueryShopLocationInput>;
+  riverId?: Maybe<Scalars['String']>;
 };
 
 
@@ -222,12 +220,10 @@ export type ResolversTypes = {
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Location: ResolverTypeWrapper<Location>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
-  River: ResolverTypeWrapper<River>;
-  Union: ResolverTypeWrapper<Union>;
-  Shop: ResolverTypeWrapper<Shop>;
-  PageInfo: ResolverTypeWrapper<PageInfo>;
-  RiverConnection: ResolverTypeWrapper<RiverConnection>;
-  RiverEdge: ResolverTypeWrapper<RiverEdge>;
+  River: ResolverTypeWrapper<RiverModel>;
+  Union: ResolverTypeWrapper<Omit<Union, 'rivers'> & { rivers: ReadonlyArray<ResolversTypes['River']> }>;
+  Shop: ResolverTypeWrapper<Omit<Shop, 'unions'> & { unions: ReadonlyArray<ResolversTypes['Union']> }>;
+  QueryShopLocationInput: QueryShopLocationInput;
   Query: ResolverTypeWrapper<{}>;
 };
 
@@ -240,12 +236,10 @@ export type ResolversParentTypes = {
   ID: Scalars['ID'];
   Location: Location;
   Int: Scalars['Int'];
-  River: River;
-  Union: Union;
-  Shop: Shop;
-  PageInfo: PageInfo;
-  RiverConnection: RiverConnection;
-  RiverEdge: RiverEdge;
+  River: RiverModel;
+  Union: Omit<Union, 'rivers'> & { rivers: ReadonlyArray<ResolversParentTypes['River']> };
+  Shop: Omit<Shop, 'unions'> & { unions: ReadonlyArray<ResolversParentTypes['Union']> };
+  QueryShopLocationInput: QueryShopLocationInput;
   Query: {};
 };
 
@@ -274,8 +268,10 @@ export type RiverResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type UnionResolvers<ContextType = any, ParentType extends ResolversParentTypes['Union'] = ResolversParentTypes['Union']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  link?: Resolver<Maybe<ResolversTypes['URI']>, ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   rivers?: Resolver<ReadonlyArray<ResolversTypes['River']>, ParentType, ContextType>;
+  term?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 
@@ -288,29 +284,11 @@ export type ShopResolvers<ContextType = any, ParentType extends ResolversParentT
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 
-export type PageInfoResolvers<ContextType = any, ParentType extends ResolversParentTypes['PageInfo'] = ResolversParentTypes['PageInfo']> = {
-  endCursor?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  hasNextPage?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType>;
-};
-
-export type RiverConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['RiverConnection'] = ResolversParentTypes['RiverConnection']> = {
-  edges?: Resolver<ReadonlyArray<ResolversTypes['RiverEdge']>, ParentType, ContextType>;
-  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType>;
-};
-
-export type RiverEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['RiverEdge'] = ResolversParentTypes['RiverEdge']> = {
-  cursor?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  node?: Resolver<ResolversTypes['River'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType>;
-};
-
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   river?: Resolver<Maybe<ResolversTypes['River']>, ParentType, ContextType, RequireFields<QueryRiverArgs, 'id'>>;
-  searchRiver?: Resolver<ResolversTypes['RiverConnection'], ParentType, ContextType, RequireFields<QuerySearchRiverArgs, 'query'>>;
+  searchRiver?: Resolver<ReadonlyArray<ResolversTypes['River']>, ParentType, ContextType, RequireFields<QuerySearchRiverArgs, 'query'>>;
   shop?: Resolver<Maybe<ResolversTypes['Shop']>, ParentType, ContextType, RequireFields<QueryShopArgs, 'id'>>;
-  union?: Resolver<Maybe<ResolversTypes['Union']>, ParentType, ContextType, RequireFields<QueryUnionArgs, 'id'>>;
+  queryShop?: Resolver<ReadonlyArray<ResolversTypes['Shop']>, ParentType, ContextType, RequireFields<QueryQueryShopArgs, never>>;
 };
 
 export type Resolvers<ContextType = any> = {
@@ -320,9 +298,6 @@ export type Resolvers<ContextType = any> = {
   River?: RiverResolvers<ContextType>;
   Union?: UnionResolvers<ContextType>;
   Shop?: ShopResolvers<ContextType>;
-  PageInfo?: PageInfoResolvers<ContextType>;
-  RiverConnection?: RiverConnectionResolvers<ContextType>;
-  RiverEdge?: RiverEdgeResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 };
 

@@ -1,0 +1,17 @@
+query TestRiverQuery($id: String!) {
+  river(id: $id) {
+    id
+    location {
+      lat
+      lng
+    }
+    name
+    union {
+      id
+      name
+      rivers {
+        id
+      }
+    }
+  }
+}

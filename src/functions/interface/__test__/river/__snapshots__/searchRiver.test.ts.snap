@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search river query riverがある場合 1`] = `
+Object {
+  "data": Object {
+    "searchRiver": Array [
+      Object {
+        "id": "river-test-id-1",
+        "location": Object {
+          "lat": 121,
+          "lng": 91,
+        },
+        "name": "river name 1",
+        "union": null,
+      },
+      Object {
+        "id": "river-test-id-10",
+        "location": Object {
+          "lat": 130,
+          "lng": 100,
+        },
+        "name": "river name 10",
+        "union": null,
+      },
+      Object {
+        "id": "river-test-id-11",
+        "location": Object {
+          "lat": 131,
+          "lng": 101,
+        },
+        "name": "river name 11",
+        "union": null,
+      },
+      Object {
+        "id": "river-test-id-12",
+        "location": Object {
+          "lat": 132,
+          "lng": 102,
+        },
+        "name": "river name 12",
+        "union": null,
+      },
+      Object {
+        "id": "river-test-id-13",
+        "location": Object {
+          "lat": 133,
+          "lng": 103,
+        },
+        "name": "river name 13",
+        "union": null,
+      },
+      Object {
+        "id": "river-test-id-14",
+        "location": Object {
+          "lat": 134,
+          "lng": 104,
+        },
+        "name": "river name 14",
+        "union": null,
+      },
+      Object {
+        "id": "river-test-id-15",
+        "location": Object {
+          "lat": 135,
+          "lng": 105,
+        },
+        "name": "river name 15",
+        "union": null,
+      },
+      Object {
+        "id": "river-test-id-16",
+        "location": Object {
+          "lat": 136,
+          "lng": 106,
+        },
+        "name": "river name 16",
+        "union": null,
+      },
+      Object {
+        "id": "river-test-id-17",
+        "location": Object {
+          "lat": 137,
+          "lng": 107,
+        },
+        "name": "river name 17",
+        "union": null,
+      },
+      Object {
+        "id": "river-test-id-18",
+        "location": Object {
+          "lat": 138,
+          "lng": 108,
+        },
+        "name": "river name 18",
+        "union": null,
+      },
+      Object {
+        "id": "river-test-id-19",
+        "location": Object {
+          "lat": 139,
+          "lng": 109,
+        },
+        "name": "river name 19",
+        "union": null,
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
