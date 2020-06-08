@@ -23,11 +23,11 @@ type Location {
   """
   緯度
   """
-  lat: Int!
+  lat: Float!
   """
   経度
   """
-  lng: Int!
+  lng: Float!
 }
 
 """
@@ -98,7 +98,10 @@ type Shop implements Node {
   name: String!
 }
 
-input QueryShopLocationInput {
+"""
+locaition parameter input
+"""
+input LocationInput {
   lat: Int!
   lng: Int!
 }
@@ -121,9 +124,12 @@ type Query {
   """
   shop(id: String!): Shop
   """
-  query shop by location
+  query shop
   """
-  queryShop(location: QueryShopLocationInput, riverId: String): [Shop!]!
+  shops(
+    location: LocationInput
+    riverId: String
+  ): [Shop!]!
 }
 
 `;

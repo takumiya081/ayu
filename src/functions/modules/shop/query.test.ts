@@ -1,5 +1,4 @@
 import {riversData} from '@/functions/modules/river/data/riversData';
-import {unionsData} from '@/functions/modules/union/data/unionsData';
 
 import {shopsData, unionIdsDelimiter} from './data/shopsData';
 import {findShopById, queryShopsByLocation, queryShopsByRiverId} from './query';
@@ -38,10 +37,7 @@ describe('shops query', () => {
     test('river idが存在するとき、そのunionに関連するshop modelを取得する', () => {
       const river = riversData[1];
       const result = queryShopsByRiverId(river.id);
-      const expectShops = shopsData.filter((s) =>
-        s.unionIds.split(unionIdsDelimiter).includes(unionsData[0].id),
-      );
-      expect(result.map((s) => s.id)).toStrictEqual(expectShops.map((s) => s.id));
+      expect(result.map((s) => s.id)).toStrictEqual(['shop-test-id-0', 'shop-test-id-1']);
     });
 
     test('river idが存在しないとき、空配列になる', () => {

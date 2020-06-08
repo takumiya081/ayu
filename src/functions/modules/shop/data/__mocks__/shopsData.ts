@@ -1,5 +1,7 @@
 import {ShopDataType} from '../shopsData';
 
+export const unionIdsDelimiter = ',';
+
 const mockPrefectures = ['和歌山県', '奈良県', '三重県', '京都府', '滋賀県'];
 
 const mockShopsData: ShopDataType[] = [];

@@ -25,9 +25,9 @@ export type Node = {
 export type Location = {
   readonly __typename?: 'Location';
   /** 緯度 */
-  readonly lat: Scalars['Int'];
+  readonly lat: Scalars['Float'];
   /** 経度 */
-  readonly lng: Scalars['Int'];
+  readonly lng: Scalars['Float'];
 };
 
 /**
@@ -73,7 +73,8 @@ export type Shop = Node & {
   readonly name: Scalars['String'];
 };
 
-export type QueryShopLocationInput = {
+/** locaition parameter input */
+export type LocationInput = {
   readonly lat: Scalars['Int'];
   readonly lng: Scalars['Int'];
 };
@@ -90,8 +91,8 @@ export type Query = {
   readonly searchRiver: ReadonlyArray<River>;
   /** find Shop */
   readonly shop?: Maybe<Shop>;
-  /** query shop by location */
-  readonly queryShop: ReadonlyArray<Shop>;
+  /** query shop */
+  readonly shops: ReadonlyArray<Shop>;
 };
 
 
@@ -126,8 +127,8 @@ export type QueryShopArgs = {
  * query type
  * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
  */
-export type QueryQueryShopArgs = {
-  location?: Maybe<QueryShopLocationInput>;
+export type QueryShopsArgs = {
+  location?: Maybe<LocationInput>;
   riverId?: Maybe<Scalars['String']>;
 };
 
@@ -209,34 +210,36 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  String: ResolverTypeWrapper<Scalars['String']>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   URI: ResolverTypeWrapper<Scalars['URI']>;
   Node: ResolversTypes['River'] | ResolversTypes['Union'] | ResolversTypes['Shop'];
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Location: ResolverTypeWrapper<Location>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
+  Float: ResolverTypeWrapper<Scalars['Float']>;
   River: ResolverTypeWrapper<RiverModel>;
+  String: ResolverTypeWrapper<Scalars['String']>;
   Union: ResolverTypeWrapper<Union>;
   Shop: ResolverTypeWrapper<ShopModel>;
-  QueryShopLocationInput: QueryShopLocationInput;
+  LocationInput: LocationInput;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
   Query: ResolverTypeWrapper<{}>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  String: Scalars['String'];
-  Boolean: Scalars['Boolean'];
   URI: Scalars['URI'];
   Node: ResolversParentTypes['River'] | ResolversParentTypes['Union'] | ResolversParentTypes['Shop'];
   ID: Scalars['ID'];
   Location: Location;
-  Int: Scalars['Int'];
+  Float: Scalars['Float'];
   River: RiverModel;
+  String: Scalars['String'];
   Union: Union;
   Shop: ShopModel;
-  QueryShopLocationInput: QueryShopLocationInput;
+  LocationInput: LocationInput;
+  Int: Scalars['Int'];
   Query: {};
+  Boolean: Scalars['Boolean'];
 };
 
 export interface UriScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['URI'], any> {
@@ -249,8 +252,8 @@ export type NodeResolvers<ContextType = any, ParentType extends ResolversParentT
 };
 
 export type LocationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Location'] = ResolversParentTypes['Location']> = {
-  lat?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  lng?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  lat?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  lng?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType>;
 };
 
@@ -282,7 +285,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   river?: Resolver<Maybe<ResolversTypes['River']>, ParentType, ContextType, RequireFields<QueryRiverArgs, 'id'>>;
   searchRiver?: Resolver<ReadonlyArray<ResolversTypes['River']>, ParentType, ContextType, RequireFields<QuerySearchRiverArgs, 'query'>>;
   shop?: Resolver<Maybe<ResolversTypes['Shop']>, ParentType, ContextType, RequireFields<QueryShopArgs, 'id'>>;
-  queryShop?: Resolver<ReadonlyArray<ResolversTypes['Shop']>, ParentType, ContextType, RequireFields<QueryQueryShopArgs, never>>;
+  shops?: Resolver<ReadonlyArray<ResolversTypes['Shop']>, ParentType, ContextType, RequireFields<QueryShopsArgs, never>>;
 };
 
 export type Resolvers<ContextType = any> = {

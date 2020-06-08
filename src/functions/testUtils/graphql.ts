@@ -22,9 +22,9 @@ export type Node = {
 export type Location = {
   __typename?: 'Location';
   /** 緯度 */
-  lat: Scalars['Int'];
+  lat: Scalars['Float'];
   /** 経度 */
-  lng: Scalars['Int'];
+  lng: Scalars['Float'];
 };
 
 /**
@@ -70,7 +70,8 @@ export type Shop = Node & {
   name: Scalars['String'];
 };
 
-export type QueryShopLocationInput = {
+/** locaition parameter input */
+export type LocationInput = {
   lat: Scalars['Int'];
   lng: Scalars['Int'];
 };
@@ -87,8 +88,8 @@ export type Query = {
   searchRiver: Array<River>;
   /** find Shop */
   shop?: Maybe<Shop>;
-  /** query shop by location */
-  queryShop: Array<Shop>;
+  /** query shop */
+  shops: Array<Shop>;
 };
 
 
@@ -123,8 +124,8 @@ export type QueryShopArgs = {
  * query type
  * 今の所数が莫大になる気がしないので、一旦relayではなく配列にする
  */
-export type QueryQueryShopArgs = {
-  location?: Maybe<QueryShopLocationInput>;
+export type QueryShopsArgs = {
+  location?: Maybe<LocationInput>;
   riverId?: Maybe<Scalars['String']>;
 };
 
@@ -171,6 +172,32 @@ export const TestShopQuery = gql`
       lng
     }
     link
+  }
+}
+    `;
+export const TestShopsByRiverIdQuery = gql`
+    query TestShopsByRiverIdQuery($riverId: String!) {
+  shops(riverId: $riverId) {
+    id
+    name
+    link
+    location {
+      lat
+      lng
+    }
+  }
+}
+    `;
+export const TestShopsByLocationQuery = gql`
+    query TestShopsByLocationQuery($location: LocationInput!) {
+  shops(location: $location) {
+    id
+    name
+    link
+    location {
+      lat
+      lng
+    }
   }
 }
     `;

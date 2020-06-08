@@ -1,0 +1,23 @@
+query TestShopsByRiverIdQuery($riverId: String!) {
+  shops(riverId: $riverId) {
+    id
+    name
+    link
+    location {
+      lat
+      lng
+    }
+  }
+}
+
+query TestShopsByLocationQuery($location: LocationInput!) {
+  shops(location: $location) {
+    id
+    name
+    link
+    location {
+      lat
+      lng
+    }
+  }
+}
