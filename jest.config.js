@@ -9,9 +9,7 @@ module.exports = {
   roots: ['<rootDir>/src'],
   errorOnDeprecated: true,
   globals: {
-    'ts-jest': {
-
-    },
+    'ts-jest': {},
   },
   verbose: true,
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {prefix: '<rootDir>/src/'}),
