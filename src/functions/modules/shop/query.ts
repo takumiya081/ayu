@@ -5,10 +5,12 @@ export function toShopModel(data: ShopDataType): ShopModel {
   return {
     id: data.id,
     name: data.name,
+    location: {
+      lng: data.lng,
+      lat: data.lat,
+    },
     prefecture: data.prefecture,
-    phone: data.phone,
     link: data.link,
-    terms: data.terms,
   };
 }
 

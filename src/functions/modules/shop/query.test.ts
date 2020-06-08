@@ -15,9 +15,11 @@ describe('shops query', () => {
         id: mockShop.id,
         name: mockShop.name,
         prefecture: mockShop.prefecture,
-        phone: mockShop.phone,
         link: mockShop.link,
-        terms: mockShop.terms,
+        location: {
+          lat: mockShop.lat,
+          lng: mockShop.lng,
+        },
       };
       expect(result).toStrictEqual(returnModel);
     });
