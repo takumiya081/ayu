@@ -9,6 +9,8 @@ export interface ShopDataType {
   unionIds: string;
 }
 
+export const unionIdsDelimiter = ',';
+
 export const shopsData: ReadonlyArray<ShopDataType> = [
   {
     id: 'shop-民宿　日吉屋-33.624644-135.482553',
