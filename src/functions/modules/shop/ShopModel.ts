@@ -9,4 +9,5 @@ export interface ShopModel extends Model {
     lng: number;
   };
   link?: string;
+  unionIds: string[];
 }

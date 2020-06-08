@@ -20,6 +20,7 @@ describe('shops query', () => {
           lat: mockShop.lat,
           lng: mockShop.lng,
         },
+        unionIds: mockShop.unionIds.split(','),
       };
       expect(result).toStrictEqual(returnModel);
     });

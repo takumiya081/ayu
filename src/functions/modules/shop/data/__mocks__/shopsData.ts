@@ -12,7 +12,7 @@ for (let i = 0; i < 100; i++) {
     address: `address${i}`,
     lat: 135.0 + 0.01 * i,
     lng: 33.0 + 0.01 * i,
-    unionIds: `union-test-id-${i}`,
+    unionIds: `union-test-id-${i},union-test-id-${i + 1}`,
   });
 }
 
