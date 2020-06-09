@@ -18,8 +18,9 @@
     "graphqllint": "eslint -c .eslintrc.base.js --no-eslintrc --ext .graphql  \"src/**/*.graphql\"",
     "codegen:server": "graphql-codegen -o --config ./codegen.server.yml",
     "codegen:server-test": "graphql-codegen -o --config ./codegen.server.test.yml",
+    "codegen:app": "graphql-codegen -o --config ./codegen.app.yml",
     "schemaTypeGen": "node lib/typeDefGen/index.js",
-    "codegen": "yarn codegen:server && yarn codegen:server-test && yarn schemaTypeGen"
+    "codegen": "yarn codegen:server && yarn codegen:server-test && yarn codegen:app && yarn schemaTypeGen"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

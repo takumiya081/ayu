@@ -1,0 +1,20 @@
+overwrite: true
+schema: schema.graphql
+documents:
+  - src/**/*.graphql
+  - '!src/functions/**/*.graphql'
+generates:
+  src/lib/apollo/apolloHooks.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHOC: false
+      withComponent: false
+      withHooks: true
+config:
+  scalars:
+    URI: string
+  config:
+    reactApolloVersion: 3
