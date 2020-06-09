@@ -210,36 +210,36 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
+  String: ResolverTypeWrapper<Scalars['String']>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   URI: ResolverTypeWrapper<Scalars['URI']>;
   Node: ResolversTypes['River'] | ResolversTypes['Union'] | ResolversTypes['Shop'];
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Location: ResolverTypeWrapper<Location>;
   Float: ResolverTypeWrapper<Scalars['Float']>;
   River: ResolverTypeWrapper<RiverModel>;
-  String: ResolverTypeWrapper<Scalars['String']>;
   Union: ResolverTypeWrapper<Union>;
   Shop: ResolverTypeWrapper<ShopModel>;
   LocationInput: LocationInput;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   Query: ResolverTypeWrapper<{}>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
+  String: Scalars['String'];
+  Boolean: Scalars['Boolean'];
   URI: Scalars['URI'];
   Node: ResolversParentTypes['River'] | ResolversParentTypes['Union'] | ResolversParentTypes['Shop'];
   ID: Scalars['ID'];
   Location: Location;
   Float: Scalars['Float'];
   River: RiverModel;
-  String: Scalars['String'];
   Union: Union;
   Shop: ShopModel;
   LocationInput: LocationInput;
   Int: Scalars['Int'];
   Query: {};
-  Boolean: Scalars['Boolean'];
 };
 
 export interface UriScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['URI'], any> {

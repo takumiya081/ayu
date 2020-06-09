@@ -126,10 +126,7 @@ type Query {
   """
   query shop
   """
-  shops(
-    location: LocationInput
-    riverId: String
-  ): [Shop!]!
+  shops(location: LocationInput, riverId: String): [Shop!]!
 }
 
 `;

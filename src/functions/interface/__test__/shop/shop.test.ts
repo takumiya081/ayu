@@ -1,7 +1,6 @@
-import {btoa} from 'abab';
-
 import {shopsData} from '@/functions/modules/shop/data/shopsData';
 import {createApolloTestClient, TestShopQuery} from '@/functions/testUtils';
+import {btoa} from '@/lib/base64';
 
 jest.mock('@/functions/modules/shop/data/shopsData');
 
