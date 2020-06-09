@@ -3,5 +3,5 @@ import {ChildComponentProps} from 'google-map-react';
 import React from 'react';
 
 export const RiverMarker: React.FC<ChildComponentProps> = () => {
-  return <FlagIcon color="primary" />;
+  return <FlagIcon color="primary" fontSize="large" />;
 };
