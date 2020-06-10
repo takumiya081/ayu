@@ -62,6 +62,8 @@ export type Union = Node & {
 /** おとり店 */
 export type Shop = Node & {
   __typename?: 'Shop';
+  /** 住所 */
+  address: Scalars['String'];
   /** id of union */
   id: Scalars['ID'];
   /** ホームページなど */
@@ -74,8 +76,8 @@ export type Shop = Node & {
 
 /** locaition parameter input */
 export type LocationInput = {
-  lat: Scalars['Int'];
-  lng: Scalars['Int'];
+  lat: Scalars['Float'];
+  lng: Scalars['Float'];
 };
 
 /**
@@ -148,6 +150,24 @@ export type SearchRiverQuery = (
   )> }
 );
 
+export type SearchShopsQueryVariables = {
+  location?: Maybe<LocationInput>;
+  riverId?: Maybe<Scalars['String']>;
+};
+
+
+export type SearchShopsQuery = (
+  { __typename?: 'Query' }
+  & { shops: Array<(
+    { __typename?: 'Shop' }
+    & Pick<Shop, 'id' | 'name' | 'address'>
+    & { location: (
+      { __typename?: 'Location' }
+      & Pick<Location, 'lat' | 'lng'>
+    ) }
+  )> }
+);
+
 
 export const SearchRiverDocument = gql`
     query SearchRiver($query: String!) {
@@ -187,3 +207,43 @@ export function useSearchRiverLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type SearchRiverQueryHookResult = ReturnType<typeof useSearchRiverQuery>;
 export type SearchRiverLazyQueryHookResult = ReturnType<typeof useSearchRiverLazyQuery>;
 export type SearchRiverQueryResult = ApolloReactCommon.QueryResult<SearchRiverQuery, SearchRiverQueryVariables>;
+export const SearchShopsDocument = gql`
+    query SearchShops($location: LocationInput, $riverId: String) {
+  shops(location: $location, riverId: $riverId) {
+    id
+    name
+    address
+    location {
+      lat
+      lng
+    }
+  }
+}
+    `;
+
+/**
+ * __useSearchShopsQuery__
+ *
+ * To run a query within a React component, call `useSearchShopsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchShopsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchShopsQuery({
+ *   variables: {
+ *      location: // value for 'location'
+ *      riverId: // value for 'riverId'
+ *   },
+ * });
+ */
+export function useSearchShopsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchShopsQuery, SearchShopsQueryVariables>) {
+        return ApolloReactHooks.useQuery<SearchShopsQuery, SearchShopsQueryVariables>(SearchShopsDocument, baseOptions);
+      }
+export function useSearchShopsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchShopsQuery, SearchShopsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<SearchShopsQuery, SearchShopsQueryVariables>(SearchShopsDocument, baseOptions);
+        }
+export type SearchShopsQueryHookResult = ReturnType<typeof useSearchShopsQuery>;
+export type SearchShopsLazyQueryHookResult = ReturnType<typeof useSearchShopsLazyQuery>;
+export type SearchShopsQueryResult = ApolloReactCommon.QueryResult<SearchShopsQuery, SearchShopsQueryVariables>;

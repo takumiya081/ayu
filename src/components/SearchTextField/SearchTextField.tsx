@@ -7,7 +7,7 @@ import {useDebouncedCallback} from 'use-debounce';
 
 import {SearchRiverQuery, useSearchRiverLazyQuery} from '@/lib/apollo';
 
-type RiverOption = SearchRiverQuery['searchRiver'][0];
+export type RiverOption = SearchRiverQuery['searchRiver'][0];
 
 interface SearchTextFieldProps extends Pick<TextFieldProps, 'placeholder'> {
   onChange: (value: RiverOption) => void;

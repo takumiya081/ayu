@@ -11,6 +11,7 @@ type ShopType = SearchShopsQuery['shops'][0];
 
 interface ShopMarkerProps extends ChildComponentProps, ShopType {
   selected?: boolean;
+  onClick: (id: string) => void;
 }
 
 const MakerWrapper = styled.div`
@@ -57,11 +58,16 @@ const StoreIcon = styled(MUIStoreIcon)`
 `;
 
 export const ShopMarker: React.FC<ShopMarkerProps> = (props) => {
-  const {selected = false} = props;
+  const {selected = false, onClick, ...shop} = props;
+
+  function handleClick() {
+    onClick(shop.id);
+  }
+
   return (
     <MakerWrapper>
-      <StoreIcon fontSize="large" />
-      {selected && <InfoComment {...props} />}
+      <StoreIcon fontSize="large" onClick={handleClick} />
+      {selected && <InfoComment {...shop} />}
     </MakerWrapper>
   );
 };
