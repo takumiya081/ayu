@@ -81,6 +81,10 @@ type Union implements Node {
 """
 type Shop implements Node {
   """
+  住所
+  """
+  address: String!
+  """
   id of union
   """
   id: ID!

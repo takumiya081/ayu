@@ -49,6 +49,7 @@ export const resolvers: Resolvers<{}> = {
       const id = btoa(parent.id);
       return id;
     },
+    address: (parent) => parent.address,
     name: (parent) => parent.name,
     link: (parent) => parent.link || null,
     location: (parent) => parent.location,

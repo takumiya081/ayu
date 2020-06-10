@@ -5,6 +5,7 @@ Object {
   "data": Object {
     "shops": Array [
       Object {
+        "address": "address39",
         "id": "c2hvcC10ZXN0LWlkLTM5",
         "link": "https://example.com?i=39",
         "location": Object {
@@ -14,6 +15,7 @@ Object {
         "name": "shop name 39",
       },
       Object {
+        "address": "address40",
         "id": "c2hvcC10ZXN0LWlkLTQw",
         "link": "https://example.com?i=40",
         "location": Object {
@@ -23,6 +25,7 @@ Object {
         "name": "shop name 40",
       },
       Object {
+        "address": "address41",
         "id": "c2hvcC10ZXN0LWlkLTQx",
         "link": "https://example.com?i=41",
         "location": Object {
@@ -48,6 +51,7 @@ Object {
   "data": Object {
     "shops": Array [
       Object {
+        "address": "address0",
         "id": "c2hvcC10ZXN0LWlkLTA=",
         "link": "https://example.com?i=0",
         "location": Object {
@@ -57,6 +61,7 @@ Object {
         "name": "shop name 0",
       },
       Object {
+        "address": "address1",
         "id": "c2hvcC10ZXN0LWlkLTE=",
         "link": "https://example.com?i=1",
         "location": Object {

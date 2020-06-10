@@ -4,6 +4,7 @@ export interface ShopModel extends Model {
   id: string;
   name: string;
   prefecture: string;
+  address: string;
   location: {
     lat: number;
     lng: number;

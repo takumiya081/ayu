@@ -63,6 +63,8 @@ export type Union = Node & {
 /** おとり店 */
 export type Shop = Node & {
   readonly __typename?: 'Shop';
+  /** 住所 */
+  readonly address: Scalars['String'];
   /** id of union */
   readonly id: Scalars['ID'];
   /** ホームページなど */
@@ -272,6 +274,7 @@ export type UnionResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type ShopResolvers<ContextType = any, ParentType extends ResolversParentTypes['Shop'] = ResolversParentTypes['Shop']> = {
+  address?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   link?: Resolver<Maybe<ResolversTypes['URI']>, ParentType, ContextType>;
   location?: Resolver<ResolversTypes['Location'], ParentType, ContextType>;
