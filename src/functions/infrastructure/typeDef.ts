@@ -102,8 +102,8 @@ type Shop implements Node {
 locaition parameter input
 """
 input LocationInput {
-  lat: Int!
-  lng: Int!
+  lat: Float!
+  lng: Float!
 }
 
 """

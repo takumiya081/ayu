@@ -72,8 +72,8 @@ export type Shop = Node & {
 
 /** locaition parameter input */
 export type LocationInput = {
-  lat: Scalars['Int'];
-  lng: Scalars['Int'];
+  lat: Scalars['Float'];
+  lng: Scalars['Float'];
 };
 
 /**

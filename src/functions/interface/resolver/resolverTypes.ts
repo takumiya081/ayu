@@ -75,8 +75,8 @@ export type Shop = Node & {
 
 /** locaition parameter input */
 export type LocationInput = {
-  readonly lat: Scalars['Int'];
-  readonly lng: Scalars['Int'];
+  readonly lat: Scalars['Float'];
+  readonly lng: Scalars['Float'];
 };
 
 /**
@@ -221,7 +221,6 @@ export type ResolversTypes = {
   Union: ResolverTypeWrapper<Union>;
   Shop: ResolverTypeWrapper<ShopModel>;
   LocationInput: LocationInput;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
   Query: ResolverTypeWrapper<{}>;
 };
 
@@ -238,7 +237,6 @@ export type ResolversParentTypes = {
   Union: Union;
   Shop: ShopModel;
   LocationInput: LocationInput;
-  Int: Scalars['Int'];
   Query: {};
 };
 
