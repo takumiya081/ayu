@@ -11,6 +11,7 @@ export function toShopModel(data: ShopDataType): ShopModel {
       lat: data.lat,
     },
     prefecture: data.prefecture,
+    address: data.address,
     link: data.link,
     unionIds: data.unionIds.split(unionIdsDelimiter),
   };

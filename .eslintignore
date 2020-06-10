@@ -5,3 +5,4 @@ src/functions/infrastructure/typeDef.ts
 src/functions/testUtils/graphql.ts
 lib/typeDefGen/**
 schema.graphql
+src/lib/apollo/apolloHooks.ts

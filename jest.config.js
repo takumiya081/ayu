@@ -3,8 +3,11 @@ const {compilerOptions} = require('./tsconfig');
 
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
-  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
+  testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
+  transform: {
+    '^.+\\.(ts|tsx)$': 'babel-jest',
+  },
   collectCoverage: false,
   roots: ['<rootDir>/src'],
   errorOnDeprecated: true,

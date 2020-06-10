@@ -1,11 +1,10 @@
-import {atob, btoa} from 'abab';
-
 import {findRiverById, queryByName} from '@/functions/modules/river/query';
 import {
   findShopById,
   queryShopsByLocation,
   queryShopsByRiverId,
 } from '@/functions/modules/shop/query';
+import {atob, btoa} from '@/lib/base64';
 
 import {Resolvers} from './resolverTypes';
 
@@ -14,9 +13,6 @@ export const resolvers: Resolvers<{}> = {
   Query: {
     river: (_, {id}) => {
       const encodedId = atob(id);
-      if (encodedId === null) {
-        throw new Error('river id cannot decoded');
-      }
       return findRiverById(encodedId) || null;
     },
     searchRiver: (_, {query}) => {
@@ -24,9 +20,6 @@ export const resolvers: Resolvers<{}> = {
     },
     shop: (_, {id}) => {
       const encodedId = atob(id);
-      if (encodedId === null) {
-        throw new Error('shop id cannot decoded');
-      }
       return findShopById(encodedId) || null;
     },
     shops: (_, {riverId, location}) => {
@@ -46,9 +39,6 @@ export const resolvers: Resolvers<{}> = {
   River: {
     id: (parent) => {
       const id = btoa(parent.id);
-      if (id === null) {
-        throw new Error(`river id cannot encoded`);
-      }
       return id;
     },
     name: (parent) => parent.name,
@@ -57,11 +47,9 @@ export const resolvers: Resolvers<{}> = {
   Shop: {
     id: (parent) => {
       const id = btoa(parent.id);
-      if (id === null) {
-        throw new Error(`Shop id cannot encoded`);
-      }
       return id;
     },
+    address: (parent) => parent.address,
     name: (parent) => parent.name,
     link: (parent) => parent.link || null,
     location: (parent) => parent.location,

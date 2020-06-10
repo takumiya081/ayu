@@ -88,6 +88,7 @@ module.exports = {
           'tests/**',
           '**/__tests__/**',
           '**/seeder/**',
+          'src/lib/testUtils/**',
         ],
         optionalDependencies: false,
       },

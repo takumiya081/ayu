@@ -3,6 +3,7 @@ query TestShopsByRiverIdQuery($riverId: String!) {
     id
     name
     link
+    address
     location {
       lat
       lng
@@ -15,6 +16,7 @@ query TestShopsByLocationQuery($location: LocationInput!) {
     id
     name
     link
+    address
     location {
       lat
       lng

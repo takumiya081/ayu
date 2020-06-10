@@ -1,7 +1,6 @@
-import {btoa} from 'abab';
-
 import {riversData} from '@/functions/modules/river/data/riversData';
 import {createApolloTestClient, TestRiverQuery} from '@/functions/testUtils';
+import {btoa} from '@/lib/base64';
 
 jest.mock('@/functions/modules/river/data/riversData');
 

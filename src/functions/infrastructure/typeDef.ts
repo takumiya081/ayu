@@ -81,6 +81,10 @@ type Union implements Node {
 """
 type Shop implements Node {
   """
+  住所
+  """
+  address: String!
+  """
   id of union
   """
   id: ID!
@@ -102,8 +106,14 @@ type Shop implements Node {
 locaition parameter input
 """
 input LocationInput {
-  lat: Int!
-  lng: Int!
+  """
+  緯度
+  """
+  lat: Float!
+  """
+  経度
+  """
+  lng: Float!
 }
 
 """
@@ -126,10 +136,7 @@ type Query {
   """
   query shop
   """
-  shops(
-    location: LocationInput
-    riverId: String
-  ): [Shop!]!
+  shops(location: LocationInput, riverId: String): [Shop!]!
 }
 
 `;

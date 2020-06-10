@@ -2,6 +2,7 @@ query TestShopQuery($id: String!) {
   shop(id: $id) {
     id
     name
+    address
     location {
       lat
       lng

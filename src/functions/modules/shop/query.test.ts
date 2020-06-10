@@ -18,6 +18,7 @@ describe('shops query', () => {
         name: mockShop.name,
         prefecture: mockShop.prefecture,
         link: mockShop.link,
+        address: mockShop.address,
         location: {
           lat: mockShop.lat,
           lng: mockShop.lng,

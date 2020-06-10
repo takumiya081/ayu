@@ -1,0 +1,10 @@
+query SearchRiver($query: String!) {
+  searchRiver(query: $query) {
+    id
+    name
+    location {
+      lat
+      lng
+    }
+  }
+}

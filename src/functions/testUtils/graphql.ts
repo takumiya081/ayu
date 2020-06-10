@@ -60,6 +60,8 @@ export type Union = Node & {
 /** おとり店 */
 export type Shop = Node & {
   __typename?: 'Shop';
+  /** 住所 */
+  address: Scalars['String'];
   /** id of union */
   id: Scalars['ID'];
   /** ホームページなど */
@@ -72,8 +74,10 @@ export type Shop = Node & {
 
 /** locaition parameter input */
 export type LocationInput = {
-  lat: Scalars['Int'];
-  lng: Scalars['Int'];
+  /** 緯度 */
+  lat: Scalars['Float'];
+  /** 経度 */
+  lng: Scalars['Float'];
 };
 
 /**
@@ -167,6 +171,7 @@ export const TestShopQuery = gql`
   shop(id: $id) {
     id
     name
+    address
     location {
       lat
       lng
@@ -181,6 +186,7 @@ export const TestShopsByRiverIdQuery = gql`
     id
     name
     link
+    address
     location {
       lat
       lng
@@ -194,6 +200,7 @@ export const TestShopsByLocationQuery = gql`
     id
     name
     link
+    address
     location {
       lat
       lng

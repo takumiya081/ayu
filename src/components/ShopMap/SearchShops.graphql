@@ -1,0 +1,11 @@
+query SearchShops($location: LocationInput, $riverId: String) {
+  shops(location: $location, riverId: $riverId) {
+    id
+    name
+    address
+    location {
+      lat
+      lng
+    }
+  }
+}
