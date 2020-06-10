@@ -1,73 +1,68 @@
+import Fade from '@material-ui/core/Fade';
+import IconButton from '@material-ui/core/IconButton';
 import MuiLink from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
 import Typography from '@material-ui/core/Typography';
-import MUIStoreIcon from '@material-ui/icons/Store';
+import RoomIcon from '@material-ui/icons/Room';
 import {ChildComponentProps} from 'google-map-react';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
+import {LayoutBox} from '@/components/LayoutBox';
 import {SearchShopsQuery} from '@/lib/apollo';
-import {styled} from '@/style/styled';
 
-type ShopType = SearchShopsQuery['shops'][0];
+type ShopType = Pick<SearchShopsQuery['shops'][0], 'address' | 'name' | 'id'>;
 
 interface ShopMarkerProps extends ChildComponentProps, ShopType {
   selected?: boolean;
   onClick: (id: string) => void;
 }
 
-const MakerWrapper = styled.div`
-  position: relative;
-  cursor: pointer;
-`;
-
-const InformationWrapper = styled.div`
-  position: absolute;
-  padding: ${({theme}) => theme.spaces[3]}px;
-  width: 200px;
-  cursor: default;
-  z-index: ${({theme}) => theme.zIndices.tooltip};
-  bottom: 105%;
-  left: 0;
-  border: 1px solid ${({theme}) => theme.colors.foundation.light[1]};
-  background: #fff;
-`;
-
-const InfoComment: React.FC<ShopType> = (props) => {
-  const {name, address} = props;
-  return (
-    <InformationWrapper>
-      <Typography variant="h5" component="h5">
-        {name}
-      </Typography>
-      <MuiLink
-        href={encodeURI(`https://www.google.com/maps/search/?api=1&query=${address}`)}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        地図アプリで表示する
-      </MuiLink>
-    </InformationWrapper>
-  );
-};
-
-const StoreIcon = styled(MUIStoreIcon)`
-  position: relative;
-  padding: ${({theme}) => theme.spaces[2]}px;
-  border-radius: 50%;
-  color: ${({theme}) => theme.colors.primary.innerText};
-  background: ${({theme}) => theme.colors.primary.default};
-`;
-
 export const ShopMarker: React.FC<ShopMarkerProps> = (props) => {
   const {selected = false, onClick, ...shop} = props;
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  function handleClick() {
+  useEffect(() => {
+    if (!selected && anchorEl) {
+      setAnchorEl(null);
+    }
+  }, [selected]);
+
+  function handleClick(e: React.MouseEvent<HTMLElement>) {
+    if (selected) {
+      return;
+    }
+    setAnchorEl(e.currentTarget);
     onClick(shop.id);
   }
-
+  const id = selected ? 'transitions-popper' : undefined;
   return (
-    <MakerWrapper>
-      <StoreIcon fontSize="large" onClick={handleClick} />
-      {selected && <InfoComment {...shop} />}
-    </MakerWrapper>
+    <>
+      <IconButton onClick={handleClick} aria-label="shop icon button">
+        <RoomIcon color="error" fontSize="large" />
+      </IconButton>
+      <Popper id={id} open={!!selected} anchorEl={anchorEl} transition placement="top">
+        {({TransitionProps}) => (
+          <Fade {...TransitionProps} timeout={350}>
+            <Paper>
+              <LayoutBox px="3" py="2">
+                <Typography variant="h5" component="h5">
+                  {shop.name}
+                </Typography>
+                <MuiLink
+                  href={encodeURI(
+                    `https://www.google.com/maps/search/?api=1&query=${shop.address}`,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  地図アプリで表示する
+                </MuiLink>
+              </LayoutBox>
+            </Paper>
+          </Fade>
+        )}
+      </Popper>
+    </>
   );
 };
