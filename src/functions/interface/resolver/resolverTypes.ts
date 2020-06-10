@@ -77,7 +77,9 @@ export type Shop = Node & {
 
 /** locaition parameter input */
 export type LocationInput = {
+  /** 緯度 */
   readonly lat: Scalars['Float'];
+  /** 経度 */
   readonly lng: Scalars['Float'];
 };
 
