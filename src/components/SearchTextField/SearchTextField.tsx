@@ -93,6 +93,7 @@ export const SearchTextField: React.FC<SearchTextFieldProps> = (props) => {
   return (
     <Autocomplete
       fullWidth
+      blurOnSelect
       open={open}
       onOpen={handleOpen}
       onClose={handleClose}
