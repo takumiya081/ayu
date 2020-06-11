@@ -23,7 +23,7 @@ export const SideMenu: React.FC = () => {
         />
       </ListItem>
       <ListItem>
-        <ListItemText primary={<Link href="/">getting started</Link>} />
+        <ListItemText primary={<Link href="/getting-started">getting started</Link>} />
       </ListItem>
       <ListItem
         component="a"
