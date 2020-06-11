@@ -39,11 +39,16 @@ const defaultCenter: Location = {lat: 34.68639, lng: 135.52};
 export const ShopMap: React.FC<MapProps> = (props) => {
   const {river} = props;
   const [userPosition, setUserPosition] = useState<Location | undefined>();
-  const [center, setCenter] = useState<Location>(defaultCenter);
+  const [center, setCenter] = useState<Location>(
+    river
+      ? {lat: river.location.lat, lng: river.location.lng}
+      : {lat: defaultCenter.lat, lng: defaultCenter.lng},
+  );
   const [selectedShopId, setSelectedShopId] = useState<string | undefined>();
+
   const {data: dataFromLocation} = useSearchShopsQuery({
     variables: {
-      location: center,
+      location: {lat: center.lat, lng: center.lng},
     },
   });
   const {data: dataFromRiver} = useSearchShopsQuery({

@@ -29,14 +29,14 @@ function createApolloClient() {
   });
 }
 
-export function initializeApollo(initialState = null) {
+export function initializeApollo(initialState: NormalizedCacheObject | null = null) {
   // eslint-disable-next-line no-underscore-dangle
   const _apolloClient = apolloClient ?? createApolloClient();
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // get hydrated here
   if (initialState) {
-    _apolloClient.cache.restore({});
+    _apolloClient.cache.restore(initialState);
   }
   // For SSG and SSR always create a new Apollo Client
   if (typeof window === 'undefined') return _apolloClient;
@@ -47,7 +47,7 @@ export function initializeApollo(initialState = null) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function useApollo(initialState: any) {
+export function useApollo(initialState: NormalizedCacheObject | null) {
   const store = useMemo(() => initializeApollo(initialState), [initialState]);
   return store;
 }

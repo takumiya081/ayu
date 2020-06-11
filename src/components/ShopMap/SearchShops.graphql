@@ -9,3 +9,25 @@ query SearchShops($location: LocationInput, $riverId: String) {
     }
   }
 }
+
+# fieldの数が少ないので、同じfieldをそれぞれ書いてるがfragmentを使うときは以下の設定もすること
+# https://www.apollographql.com/docs/react/data/fragments/
+query InitialShopsFromRiver($riverId: String!) {
+  river(id: $riverId) {
+    id
+    name
+    location {
+      lat
+      lng
+    }
+  }
+  shops(riverId: $riverId) {
+    id
+    name
+    address
+    location {
+      lat
+      lng
+    }
+  }
+}
