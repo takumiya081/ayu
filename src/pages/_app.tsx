@@ -28,14 +28,13 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
       <DefaultSeo
         dangerouslySetAllPagesToNoIndex={process.env.NODE_ENV !== 'production'}
         dangerouslySetAllPagesToNoFollow={process.env.NODE_ENV !== 'production'}
-        titleTemplate="%s | 鮎 map"
-        description="鮎釣りに関するオープンソース情報"
+        titleTemplate="%s | きときと鮎マップ"
+        description="近くのおとり鮎店を地図と川から探せるオープンソースのサービス"
         openGraph={{
           type: 'website',
           locale: 'ja_JP',
-          // TODO: domain決めたらいれる
-          site_name: '',
-          url: '',
+          site_name: 'きときと鮎マップ',
+          url: 'https://kitokitofish.dev/',
         }}
       />
       <MaterialUIThemeProvider theme={materialUITheme}>
