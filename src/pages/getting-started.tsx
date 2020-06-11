@@ -1,6 +1,6 @@
 /* eslint-disable import/no-default-export */
-import {Link} from '@material-ui/core';
 import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import React, {useState} from 'react';
 
@@ -28,12 +28,12 @@ export const GettingStarted: React.FC = () => {
             きときと鮎マップ
           </Typography>
         </LayoutBox>
-        <LayoutBox mb="4">
+        <LayoutBox mb="3">
           <Typography component="p" variant="subtitle1">
             鮎釣りのおとり取扱店を地図から探せるオープンソースのサービスです。
           </Typography>
         </LayoutBox>
-        <LayoutBox mb="4">
+        <LayoutBox mb="5">
           <LayoutBox mb="2">
             <Typography component="h3" variant="h5">
               なぜやるのか
@@ -63,7 +63,7 @@ export const GettingStarted: React.FC = () => {
           </Typography>
         </LayoutBox>
 
-        <LayoutBox mb="4">
+        <LayoutBox mb="5">
           <LayoutBox mb="2">
             <Typography component="h3" variant="h5">
               おとり店にもっと簡単に行けるようにする
@@ -74,7 +74,7 @@ export const GettingStarted: React.FC = () => {
           </Typography>
         </LayoutBox>
 
-        <LayoutBox mb="4">
+        <LayoutBox mb="5">
           <LayoutBox mb="2">
             <Typography component="h3" variant="h5">
               開発と貢献方法
@@ -105,7 +105,7 @@ export const GettingStarted: React.FC = () => {
           </Typography>
         </LayoutBox>
 
-        <LayoutBox mb="4">
+        <LayoutBox mb="5">
           <LayoutBox mb="2">
             <Typography component="h3" variant="h5">
               データの削除の依頼
@@ -118,7 +118,7 @@ export const GettingStarted: React.FC = () => {
           </Typography>
         </LayoutBox>
 
-        <LayoutBox mb="4">
+        <LayoutBox mb="5">
           <LayoutBox mb="2">
             <Typography component="h3" variant="h5">
               免責事項
