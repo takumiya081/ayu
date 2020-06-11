@@ -26,8 +26,8 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
         <meta name="theme-color" content={theme.colors.primary.dark[0]} />
       </Head>
       <DefaultSeo
-        dangerouslySetAllPagesToNoIndex={process.env.FIREBASE_ENV !== 'production'}
-        dangerouslySetAllPagesToNoFollow={process.env.FIREBASE_ENV !== 'production'}
+        dangerouslySetAllPagesToNoIndex={process.env.NODE_ENV !== 'production'}
+        dangerouslySetAllPagesToNoFollow={process.env.NODE_ENV !== 'production'}
         titleTemplate="%s | 鮎 map"
         description="鮎釣りに関するオープンソース情報"
         openGraph={{
