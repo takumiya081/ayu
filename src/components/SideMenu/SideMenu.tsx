@@ -4,9 +4,15 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import Twitter from '@material-ui/icons/Twitter';
 import React from 'react';
 
 import {Link} from '@/lib/Link';
+import {styled} from '@/style/styled';
+
+const TwitterIconWrapper = styled.i`
+  color: #1da1f2;
+`;
 
 export const SideMenu: React.FC = () => {
   return (
@@ -23,7 +29,7 @@ export const SideMenu: React.FC = () => {
         />
       </ListItem>
       <ListItem>
-        <ListItemText primary={<Link href="/">getting started</Link>} />
+        <ListItemText primary={<Link href="/getting-started">はじめに</Link>} />
       </ListItem>
       <ListItem
         component="a"
@@ -34,8 +40,26 @@ export const SideMenu: React.FC = () => {
         <ListItemIcon>
           <GitHubIcon />
         </ListItemIcon>
-        <ListItemText primary="GitHub Repository" />
+        <ListItemText primary="GitHub" />
       </ListItem>
+      <ListItem>
+        <ListItemText primary="contributor" />
+      </ListItem>
+      <List component="div" disablePadding>
+        <ListItem
+          component="a"
+          href="https://twitter.com/nayakaya0606"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <ListItemIcon>
+            <TwitterIconWrapper>
+              <Twitter />
+            </TwitterIconWrapper>
+          </ListItemIcon>
+          <ListItemText primary="なやかや" />
+        </ListItem>
+      </List>
     </List>
   );
 };
