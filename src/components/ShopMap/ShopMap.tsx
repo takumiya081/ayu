@@ -1,6 +1,7 @@
 import Fab from '@material-ui/core/Fab';
 import LocationSearchingRoundedIcon from '@material-ui/icons/LocationSearchingRounded';
 import GoogleMapReact from 'google-map-react';
+import {NextSeo} from 'next-seo';
 import React, {useEffect, useState} from 'react';
 
 import {LayoutBox} from '@/components/LayoutBox';
@@ -104,39 +105,42 @@ export const ShopMap: React.FC<MapProps> = (props) => {
   }
 
   return (
-    <MapWrapper>
-      <GoogleMapReact
-        bootstrapURLKeys={{key: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY as string}}
-        defaultZoom={10}
-        defaultCenter={defaultCenter}
-        center={center}
-        onDragEnd={handleDragEnd}
-        onDrag={handleDrag}
-        options={{
-          fullscreenControl: false,
-          zoomControl: false,
-        }}
-      >
-        {userPosition && <UserMarker {...userPosition} />}
-        {river && <RiverMarker lat={river.location.lat} lng={river.location.lng} />}
-        {Array.from(shops.values()).map((s) => {
-          return (
-            <ShopMarker
-              onClick={handleSelectShop}
-              key={s.id}
-              selected={selectedShopId === s.id}
-              lat={s.location.lat}
-              lng={s.location.lng}
-              {...s}
-            />
-          );
-        })}
-      </GoogleMapReact>
-      <BottomController>
-        <Fab color="secondary" aria-label="現在地から探す" onClick={handleOnGpsClick}>
-          <LocationSearchingRoundedIcon />
-        </Fab>
-      </BottomController>
-    </MapWrapper>
+    <>
+      <NextSeo title={river ? `${river.name}のおとり鮎店の検索結果` : 'おとり鮎店 検索'} />
+      <MapWrapper>
+        <GoogleMapReact
+          bootstrapURLKeys={{key: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY as string}}
+          defaultZoom={10}
+          defaultCenter={defaultCenter}
+          center={center}
+          onDragEnd={handleDragEnd}
+          onDrag={handleDrag}
+          options={{
+            fullscreenControl: false,
+            zoomControl: false,
+          }}
+        >
+          {userPosition && <UserMarker {...userPosition} />}
+          {river && <RiverMarker lat={river.location.lat} lng={river.location.lng} />}
+          {Array.from(shops.values()).map((s) => {
+            return (
+              <ShopMarker
+                onClick={handleSelectShop}
+                key={s.id}
+                selected={selectedShopId === s.id}
+                lat={s.location.lat}
+                lng={s.location.lng}
+                {...s}
+              />
+            );
+          })}
+        </GoogleMapReact>
+        <BottomController>
+          <Fab color="secondary" aria-label="現在地から探す" onClick={handleOnGpsClick}>
+            <LocationSearchingRoundedIcon />
+          </Fab>
+        </BottomController>
+      </MapWrapper>
+    </>
   );
 };
