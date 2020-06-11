@@ -34,7 +34,7 @@ export const SideMenu: React.FC = () => {
         <ListItemIcon>
           <GitHubIcon />
         </ListItemIcon>
-        <ListItemText primary="GitHub Repository" />
+        <ListItemText primary="GitHub" />
       </ListItem>
     </List>
   );
