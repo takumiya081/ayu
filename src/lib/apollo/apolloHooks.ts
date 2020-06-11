@@ -170,6 +170,30 @@ export type SearchShopsQuery = (
   )> }
 );
 
+export type InitialShopsFromRiverQueryVariables = {
+  riverId: Scalars['String'];
+};
+
+
+export type InitialShopsFromRiverQuery = (
+  { __typename?: 'Query' }
+  & { river?: Maybe<(
+    { __typename?: 'River' }
+    & Pick<River, 'id' | 'name'>
+    & { location: (
+      { __typename?: 'Location' }
+      & Pick<Location, 'lat' | 'lng'>
+    ) }
+  )>, shops: Array<(
+    { __typename?: 'Shop' }
+    & Pick<Shop, 'id' | 'name' | 'address'>
+    & { location: (
+      { __typename?: 'Location' }
+      & Pick<Location, 'lat' | 'lng'>
+    ) }
+  )> }
+);
+
 
 export const SearchRiverDocument = gql`
     query SearchRiver($query: String!) {
@@ -249,3 +273,50 @@ export function useSearchShopsLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type SearchShopsQueryHookResult = ReturnType<typeof useSearchShopsQuery>;
 export type SearchShopsLazyQueryHookResult = ReturnType<typeof useSearchShopsLazyQuery>;
 export type SearchShopsQueryResult = ApolloReactCommon.QueryResult<SearchShopsQuery, SearchShopsQueryVariables>;
+export const InitialShopsFromRiverDocument = gql`
+    query InitialShopsFromRiver($riverId: String!) {
+  river(id: $riverId) {
+    id
+    name
+    location {
+      lat
+      lng
+    }
+  }
+  shops(riverId: $riverId) {
+    id
+    name
+    address
+    location {
+      lat
+      lng
+    }
+  }
+}
+    `;
+
+/**
+ * __useInitialShopsFromRiverQuery__
+ *
+ * To run a query within a React component, call `useInitialShopsFromRiverQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInitialShopsFromRiverQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInitialShopsFromRiverQuery({
+ *   variables: {
+ *      riverId: // value for 'riverId'
+ *   },
+ * });
+ */
+export function useInitialShopsFromRiverQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<InitialShopsFromRiverQuery, InitialShopsFromRiverQueryVariables>) {
+        return ApolloReactHooks.useQuery<InitialShopsFromRiverQuery, InitialShopsFromRiverQueryVariables>(InitialShopsFromRiverDocument, baseOptions);
+      }
+export function useInitialShopsFromRiverLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<InitialShopsFromRiverQuery, InitialShopsFromRiverQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<InitialShopsFromRiverQuery, InitialShopsFromRiverQueryVariables>(InitialShopsFromRiverDocument, baseOptions);
+        }
+export type InitialShopsFromRiverQueryHookResult = ReturnType<typeof useInitialShopsFromRiverQuery>;
+export type InitialShopsFromRiverLazyQueryHookResult = ReturnType<typeof useInitialShopsFromRiverLazyQuery>;
+export type InitialShopsFromRiverQueryResult = ApolloReactCommon.QueryResult<InitialShopsFromRiverQuery, InitialShopsFromRiverQueryVariables>;
